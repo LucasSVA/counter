@@ -3,15 +3,13 @@ import "./App.css"
 import Counter from "./componets/Counter"
 
 
-
-
 class App extends React.Component {
   constructor() {
     super()
 
     this.state = {
       count: 0,
-      count2: 0
+      count2: 1
 
     }
 
@@ -19,13 +17,23 @@ class App extends React.Component {
 
   handleIncrease = () => {
     this.setState({ count: this.state.count + 1 })
+    if (this.state.count >= 99) {
+      this.setState({ count: 99 })
+
+    }
+    this.setState({ count2: this.state.count2 + 1 })
+    if (this.state.count2 >= 100) {
+      this.setState({ count2: 100 })
+
+    }
 
   }
 
   handleDicrease = () => {
 
     this.setState({ count: this.state.count - 1 })
-    if (this.state.count <= 1) {
+
+    if (this.state.count <= 0) {
       this.setState({ count: 0 })
 
     }
@@ -36,24 +44,34 @@ class App extends React.Component {
   handleIncrease2 = () => {
 
     this.setState({ count2: this.state.count2 + 1 })
+    if (this.state.count2 >= 100) {
+      this.setState({ count2: 100 })
 
+    }
 
   }
 
   handleDicrease2 = () => {
     this.setState({ count2: this.state.count2 - 1 })
     if (this.state.count2 <= 1) {
-      this.setState({ count2: 0 })
+      this.setState({ count2: 1 })
 
+    }
+
+    this.setState({ count: this.state.count - 1 })
+
+    if (this.state.count <= 0) {
+
+      this.setState({ count: 0 })
     }
 
   }
 
   render() {
     return (
-      <div className="container d-flex flex-column align-items-center vh-100 ">
+      <div className="container d-flex flex-column align-items-center vh-100">
         <h1 className="">Counter</h1>
-        <div className="d-flex w-50 h-75 justify-content-around flex-column mb-5 ">
+        <div className="d-flex w-50 h-75 justify-content-around flex-column mb-5">
           <Counter count={this.state.count}
             increment={this.handleIncrease}
             substract={this.handleDicrease}
@@ -70,9 +88,6 @@ class App extends React.Component {
   }
 
 }
-
-
-
 
 
 
