@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css"
+import Counter from "./componets/Counter"
 
 
 
@@ -14,7 +15,7 @@ class App extends React.Component {
 
   }
 
-  handleIvrease = () => {
+  handleDivrease = () => {
 
     this.setState({ count: this.state.count + 1 })
 
@@ -32,9 +33,10 @@ class App extends React.Component {
         <div></div>
         <h1 className="">Counter</h1>
         <div className="d-flex w-50 bg-primary justify-content-around ">
-          <button type="button" className="btn-green buttons " onClick={this.handleDicrease}>-</button>
-          <h2>{this.state.count}</h2>
-          <button type="button" className="btn-red buttons" onClick={this.handleIvrease}>+</button>
+          <Counter count={this.state.count}
+            increment={this.handleDivrease}
+            substract={this.handleDicrease}
+          />
 
         </div>
 
